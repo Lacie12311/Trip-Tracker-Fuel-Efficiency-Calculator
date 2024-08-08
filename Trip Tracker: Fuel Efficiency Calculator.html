@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Final Exam PE</title>
+</head>
+<body>
+<!--
+Author: Lacie Hendershot
+Date: Feb 20 2023
+-->
+<h1>Lacie, Trip Stats Calculator</h1>
+Trip Name:<input type="text" id="tname" /><br /><br />
+Starting Mileage: <input type="text" id="sm" /><br /><br />
+Ending Mileage: <input type="text" id="se" /><br /><br />
+Gallons of Gas Used:<input type="text" id="gg" /><br /><br />
+<input type="button" value="Get Trip Summary" onclick="calculate()" />
+
+<script>
+	function calculate() {
+		const tn = document.getElementById("tname").value;
+		const sm = document.getElementById("sm").value;
+		const se = document.getElementById("se").value;
+		const gg = document.getElementById("gg").value;
+		let tot_mil = 0, mpg = 0;
+		tot_mil = parseInt(se) - parseInt(sm);
+		mpg = tot_mil / parseFloat(gg);
+		let data = {
+			"Trip Name": tn,
+			"Total Miles Traveled": tot_mil,
+			"Gallons of Gas Consumed": gg,
+			"Fuel Economy (MPG) for Trip": mpg.toFixed(1)
+		}
+		let mw = window.open("", "_blank", "width=300,height=600");
+		mw.document.write("<h1>Lacie, Trip Summary</h1>");
+		for (const k in data) {
+			mw.document.write("<p>" + k + ": " + data[k] + "</p>");
+		}
+	}
+</script>
+</body>
+</html>
